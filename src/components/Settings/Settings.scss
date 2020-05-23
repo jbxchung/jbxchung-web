@@ -1,0 +1,14 @@
+.settings-icon {
+  position: absolute;
+  right: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: #53565a;
+  opacity: 0.5;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 1;
+  }
+}

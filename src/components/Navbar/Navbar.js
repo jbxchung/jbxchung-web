@@ -1,0 +1,101 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import Pages from '../../constants/pageMapping';
+import NavbarLink from './NavbarLink';
+
+import * as actions from '../../actions';
+
+import logo from '../../img/logo_white_transparent.png';
+// import Logo from '../../img/logo.svg';
+import MenuIcon from '../../img/menu.svg';
+
+
+import './Navbar.scss';
+
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showNavMenu: false,
+    };
+
+    this.onMenuIconClick = this.onMenuIconClick.bind(this);
+    this.onMouseClickEvent = this.onMouseClickEvent.bind(this);
+    this.onNavbarItemClick = this.onNavbarItemClick.bind(this);
+
+    this.navbarContentRef = React.createRef();
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.onMouseClickEvent);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onMouseClickEvent);
+  }
+
+  // close dropdown navbar on click outside
+  onMouseClickEvent(e) {
+    if (!this.navbarContentRef.current.contains(e.target)) {
+      this.setState({ showNavMenu: false });
+    }
+  }
+
+  onMenuIconClick(e) {
+    console.log(e);
+    this.setState((prevState) => ({ showNavMenu: !prevState.showNavMenu }));
+  }
+
+  onNavbarItemClick(newPageId) {
+    this.props.selectActivePage(newPageId);
+  }
+
+  render() {
+    return (
+      <div className="navbar">
+        <div className="navbar-left">
+          <img src={logo} alt="logo" />
+        </div>
+        <div ref={this.navbarContentRef} className="navbar-content">
+          <MenuIcon viewBox="0 0 24 24" onClick={this.onMenuIconClick} />
+          <div className={`navbar-links${this.state.showNavMenu ? ' open' : ''}`}>
+            {
+              Pages.map((page) => (
+                <NavbarLink
+                  active={this.props.activePageId === page.id}
+                  key={page.id}
+                  onClick={this.onNavbarItemClick}
+                  target={page.id}
+                  title={page.navbarTitle}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+Navbar.propTypes = {
+  activePageId: PropTypes.string.isRequired,
+  selectActivePage: PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state) {
+  return {
+    activePageId: state.activePageId,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    selectActivePage: actions.selectActivePage,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
