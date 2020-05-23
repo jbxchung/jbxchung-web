@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+
+.home-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../img/home_source_screenshot2.png'); 
+    filter: blur(8px);
+    z-index: -1;
+  }
+
+  .text-accent-green {
+    color: $text-accent-color-green;
+  }
+
+  .text-accent-orange {
+    color: $text-accent-color-orange;
+  }
+
+  .text-accent-red {
+    color: $text-accent-color-red
+  }
+
+  .center-banner {
+    margin-bottom: 6rem;
+    text-align: center;
+    font-size: 3rem;
+
+    .banner-text {
+      margin: 0 1rem;
+      font-size: 4rem;
+    }
+  }
+
+  .banner-section {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .summary-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: $mobile-screen-breakpoint) {
+  .center-banner {
+    .banner-text {
+      display: block;
+    }
+  }
+
+}

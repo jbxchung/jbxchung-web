@@ -14,6 +14,7 @@ html, body, #root {
 
   .main-content {
     flex: 1;
+    display: flex;
     background: $main-content-background-color;
     color: $page-default-font-color;
   }

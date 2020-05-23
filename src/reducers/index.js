@@ -1,8 +1,8 @@
 import * as actionTypes from '../constants/actionTypes';
-import Pages from '../constants/pageMapping';
+import pageMapping from '../constants/pageMapping';
 
 const initialState = {
-  activePageId: Pages[0].id,
+  activePageId: pageMapping.home.id,
 };
 
 function reducer(state = initialState, action) {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Pages from '../../constants/pageMapping';
+import pageMapping from '../../constants/pageMapping';
 import NavbarLink from './NavbarLink';
 
 import * as actions from '../../actions';
@@ -64,15 +64,18 @@ class Navbar extends Component {
           <MenuIcon viewBox="0 0 24 24" onClick={this.onMenuIconClick} />
           <div className={`navbar-links${this.state.showNavMenu ? ' open' : ''}`}>
             {
-              Pages.map((page) => (
-                <NavbarLink
-                  active={this.props.activePageId === page.id}
-                  key={page.id}
-                  onClick={this.onNavbarItemClick}
-                  target={page.id}
-                  title={page.navbarTitle}
-                />
-              ))
+              Object.keys(pageMapping).map((pageName) => {
+                const page = pageMapping[pageName];
+                return (
+                  <NavbarLink
+                    active={this.props.activePageId === page.id}
+                    key={page.id}
+                    onClick={this.onNavbarItemClick}
+                    target={page.id}
+                    title={page.navbarTitle}
+                  />
+                );
+              })
             }
           </div>
         </div>
