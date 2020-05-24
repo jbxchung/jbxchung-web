@@ -6,7 +6,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        <div className="bg" />
         <div className="center-banner">
           <span className="banner-text">Design</span>
           <span>❖</span>

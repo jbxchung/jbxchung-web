@@ -10,6 +10,7 @@ class MainContent extends Component {
     const SelectedComponent = pageMapping[this.props.activePageId].component || this.props.activePageId;
     return (
       <div className="main-content">
+        <div className="bg" />
         <SelectedComponent />
       </div>
     );

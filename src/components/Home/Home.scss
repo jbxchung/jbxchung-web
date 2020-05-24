@@ -7,18 +7,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;
-
-  .bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../../img/home_source_screenshot2.png'); 
-    filter: blur(8px);
-    z-index: -1;
-  }
 
   .text-accent-green {
     color: $text-accent-color-green;
