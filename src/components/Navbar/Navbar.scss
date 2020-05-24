@@ -6,6 +6,7 @@
   align-items: flex-end;
   background: $navbar-background-color;
   color: $page-default-font-color;
+  z-index: 2;
 
   .navbar-left {
     padding: 0.5rem;
@@ -55,6 +56,7 @@
 
     svg {
       float: right;
+      margin: 1rem;
       display: none;
       cursor: pointer;
       width: 2rem;
