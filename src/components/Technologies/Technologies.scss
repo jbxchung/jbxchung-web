@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.tech-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .section {
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .section {
+      flex: 1;
+    }
+
+    h2 {
+      padding: .5rem 1rem;
+      width: 100%;
+      height: fit-content;
+      background: $text-accent-color-green;
+      white-space: nowrap;
+    }
+
+    .items {
+      padding: 0.5rem;
+
+      .item {
+        padding-left: 1rem;
+      }
+
+      >.item >.item-label {
+        font-weight: bold;
+      }
+    }
+  }
+}
