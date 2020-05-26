@@ -14,11 +14,25 @@ class Technologies extends Component {
 
     this.buildNestedItems = this.buildNestedItems.bind(this);
     this.buildSection = this.buildSection.bind(this);
+    this.hashCode = this.hashCode.bind(this);
+  }
+
+  hashCode(str) {
+    let hash = 0;
+    if (str.length === 0) {
+      return hash;
+    }
+    for (let i = 0; i < str.length; i += 1) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash |= hash; // eslint-disable-line no-bitwise
+    }
+    return hash;
   }
 
   buildNestedItems(items) {
     return items.map((item) => (
-      <div className="item">
+      <div className="item" key={this.hashCode(item.name)}>
         <span className="item-label">{item.name}</span>
         {item.experience && ` - ${item.experience}`}
         {item.items && this.buildNestedItems(item.items)}
