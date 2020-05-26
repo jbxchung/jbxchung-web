@@ -30,7 +30,8 @@ const ResumeData = {
           name: 'Javascript (Node, Express)',
           experience: '4 years',
           items: [
-            { name: 'REST APIs, data aggregation/filtering with lodash' },
+            { name: 'REST APIs and services' },
+            { name: 'Data aggregation/filtering with lodash' },
           ],
         },
         {
@@ -41,6 +42,28 @@ const ResumeData = {
             { name: 'Service implementations and database connections' },
           ],
         },
+        {
+          name: 'MongoDB, SQL',
+          experience: '2 years',
+        },
+      ],
+    },
+    other: {
+      header: 'Other',
+      items: [
+        { name: 'C++, C (Linux, embedded systems)', experience: '4 years' },
+        { name: 'C# (WPF, WinForms)', experience: '2 years' },
+        { name: 'Java (Android)' },
+        { name: 'Python' },
+        { name: 'x86 assembly' },
+      ],
+    },
+    sourceControlDevOps: {
+      header: 'Source Control + DevOps',
+      items: [
+        { name: 'Git', experience: '7 years' },
+        { name: 'TeamCity, uDeploy', experience: '2 years' },
+        { name: 'SVN (TortoiseSVN)', experience: '1 year' },
       ],
     },
   },

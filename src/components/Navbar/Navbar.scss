@@ -69,7 +69,7 @@
     }
   }
 
-  @media screen and (max-width: $mobile-screen-breakpoint) {
+  @media screen and (max-width: $screen-breakpoint-small) {
     .navbar-content {
       display: block;
 

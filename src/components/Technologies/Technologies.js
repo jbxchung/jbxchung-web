@@ -45,10 +45,8 @@ class Technologies extends Component {
           {this.buildSection(this.state.technologies.backEnd)}
         </div>
         <div className="section">
-          <h2>Other</h2>
-        </div>
-        <div className="section">
-          <h2>Source Control + DevOps</h2>
+          {this.buildSection(this.state.technologies.sourceControlDevOps)}
+          {this.buildSection(this.state.technologies.other)}
         </div>
       </div>
     );

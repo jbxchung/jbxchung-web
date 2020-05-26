@@ -42,7 +42,7 @@
   }
 }
 
-@media screen and (max-width: $mobile-screen-breakpoint) {
+@media screen and (max-width: $screen-breakpoint-small) {
   .center-banner {
     .banner-text {
       display: block;
