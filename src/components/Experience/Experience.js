@@ -5,8 +5,8 @@ import './Experience.scss';
 class Experience extends Component {
   render() {
     return (
-      <div className="about-container">
-        Experience placeholder
+      <div className="experience-container">
+        Experience timeline placeholder
       </div>
     );
   }

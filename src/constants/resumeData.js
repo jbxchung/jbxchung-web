@@ -122,7 +122,70 @@ const ResumeData = {
       ],
     },
   },
-  experience: {},
+  experience: {
+    companies: [
+      {
+        name: 'Citi Institutional Clients Group',
+        jobs: [
+          {
+            title: 'Assistant Vice President',
+            dateRange: {
+              start: Date.UTC(2019, 8),
+              end: null,
+            },
+            location: 'Jersey City, NJ',
+            description: [
+              {
+                text: 'Working closely with the business and external clients on new financial chat platform initiatives, automating trade workflows via chatbots and web application integration',
+                description: [
+                  { text: 'Received the Intelligent Interactive Workflow award in the Symphony 2019 Hackathon' },
+                  { text: 'Supported the JPMorgan-Citi joint presentation at Symphony Innovate 2019' },
+                ],
+              },
+              { text: 'Coordinating sprints, development, testing, and releases with teams across the US, Canada, and Shanghai' },
+              { text: 'Technical lead for an automated RFQ workflow application in collaboration with AllianceBernstein' },
+            ],
+          },
+          {
+            title: 'Intermediate Programmer Analyst',
+            dateRange: {
+              start: Date.UTC(2018, 8),
+              end: Date.UTC(2019, 8),
+            },
+            location: 'Jersey City, NJ',
+            description: [{ text: 'Worked with global teams (US, Canada, Israel, Shanghai) to design, develop, and integrate a web application that leverages NLP in traders’ chats to automate trade workflows across asset classes.' }],
+          },
+          {
+            title: 'IT Graduate Associate',
+            dateRange: {
+              start: Date.UTC(2017, 6),
+              end: Date.UTC(2018, 8),
+            },
+            location: 'Jersey City, NJ',
+            description: [{ text: 'Designed and developed a Client Relationship Management platform and created a UX Design System' }],
+          },
+          {
+            title: 'Summer Analyst Intern',
+            dateRange: {
+              start: Date.UTC(2016, 6),
+              end: Date.UTC(2016, 8),
+            },
+            location: 'New York, NY',
+            description: [{ text: 'Designed and developed a Client Relationship Management platform and created a UX Design System' }],
+          },
+        ],
+      },
+      {
+        name: 'DevXApp - Android Application Developer',
+        dateRange: {
+          start: Date.UTC(2014, 9),
+          end: Date.UTC(2015, 7),
+        },
+        location: 'Boston, MA',
+        description: [{ text: 'Developed an Android application for univeristy-wide food services at BU' }],
+      },
+    ],
+  },
   contact: {},
 };
 
