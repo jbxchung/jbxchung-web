@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 class NavbarLink extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class NavbarLink extends Component {
   render() {
     return (
       <div className={`navbar-link${this.props.active ? ' active' : ''}`} onClick={this.onClick}>
-        {this.props.title}
+        <Link to={this.props.target}>{this.props.title}</Link>
       </div>
     );
   }

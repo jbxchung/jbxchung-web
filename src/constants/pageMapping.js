@@ -6,27 +6,27 @@ import Contact from '../components/Contact/Contact';
 
 const Pages = {
   home: {
-    id: 'home',
+    url: ['/', '/home'],
     navbarTitle: 'Home',
     component: Home,
   },
   about: {
-    id: 'about',
+    url: '/about',
     navbarTitle: 'About',
     component: About,
   },
   technologies: {
-    id: 'technologies',
+    url: '/technologies',
     navbarTitle: 'Technologies',
     component: Technologies,
   },
   experience: {
-    id: 'experience',
+    url: '/experience',
     navbarTitle: 'Experience',
     component: Experience,
   },
   contact: {
-    id: 'contact',
+    url: '/contact',
     navbarTitle: 'Contact',
     component: Contact,
   },

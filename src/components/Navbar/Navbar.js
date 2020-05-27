@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 import pageMapping from '../../constants/pageMapping';
 import NavbarLink from './NavbarLink';
@@ -11,7 +12,6 @@ import * as actions from '../../actions';
 import logo from '../../img/logo_white_transparent.png';
 // import Logo from '../../img/logo.svg';
 import MenuIcon from '../../img/menu.svg';
-
 
 import './Navbar.scss';
 
@@ -32,6 +32,8 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.onMouseClickEvent);
+    console.log(this.props.location.pathname);
+    this.props.selectActivePage(this.props.location.pathname);
   }
 
   componentWillUnmount() {
@@ -66,12 +68,19 @@ class Navbar extends Component {
             {
               Object.keys(pageMapping).map((pageName) => {
                 const page = pageMapping[pageName];
+                let url = page.url;
+                let isActive = this.props.activePageId === url;
+                if (Array.isArray(page.url)) {
+                  url = page.url[0];
+                  isActive = url.indexOf(this.props.activePageId) !== -1;
+                }
+
                 return (
                   <NavbarLink
-                    active={this.props.activePageId === page.id}
-                    key={page.id}
+                    active={isActive}
+                    key={url}
                     onClick={this.onNavbarItemClick}
-                    target={page.id}
+                    target={url}
                     title={page.navbarTitle}
                   />
                 );
@@ -87,6 +96,7 @@ class Navbar extends Component {
 Navbar.propTypes = {
   activePageId: PropTypes.string.isRequired,
   selectActivePage: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -101,4 +111,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar));

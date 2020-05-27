@@ -7,6 +7,8 @@ import pageMapping from '../../constants/pageMapping';
 class MainContent extends Component {
   render() {
     console.log(pageMapping[this.props.activePageId]);
+    return <br />;
+    /*
     const SelectedComponent = pageMapping[this.props.activePageId].component || this.props.activePageId;
     return (
       <div className="main-content">
@@ -14,6 +16,7 @@ class MainContent extends Component {
         <SelectedComponent />
       </div>
     );
+    */
   }
 }
 
