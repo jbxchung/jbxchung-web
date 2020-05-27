@@ -7,7 +7,6 @@ import {
 
 import Navbar from './components/Navbar/Navbar';
 import Settings from './components/Settings/Settings';
-import MainContent from './components/MainContent/MainContent';
 
 import Pages from './constants/pageMapping';
 
@@ -45,9 +44,6 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-        <div className="hidden">
-          <MainContent />
-        </div>
       </div>
     );
   }
