@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
 
+import ResumeData from '../../constants/resumeData';
+
 import './About.scss';
 
 class About extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      about: ResumeData.about,
+    };
+
+    this.buildSection = this.buildSection.bind(this);
+  }
+
+  buildSection(sectionData) {
+    return (
+      <div className="text-section" key={sectionData.header}>
+        <h2>{sectionData.header}</h2>
+        {sectionData.render ? sectionData.render(sectionData.content) : sectionData.content}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="about-container">
-        <div className="text-section">
-          <h2>Who I Am</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim url est laborum.</p>
-        </div>
-        <div className="text-section">
-          <h2>What I Do</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim url est laborum.</p>
-        </div>
+        {this.state.about.sections.map(this.buildSection)}
       </div>
     );
   }

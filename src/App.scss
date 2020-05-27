@@ -16,6 +16,7 @@ html, body, #root {
     position: relative;
     flex: 1;
     display: flex;
+    justify-content: center;
     background: $main-content-background-color;
     color: $page-default-font-color;
     z-index: 1;

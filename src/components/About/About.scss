@@ -1,16 +1,50 @@
 @import '../../styles/variables.scss';
 
 .about-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   .text-section {
+    margin: 4rem 8rem;
     max-width: 60rem;
-    margin: 4rem 8rem 0;
+    text-align: justify;
+    align-self: stretch;
+    font-size: 1.5rem;
 
+    h2 {
+      border-bottom: 0.5rem solid $text-accent-color-green;
+    }
+    p {
+      margin: 0.5rem 1rem;
+      font-size: inherit;
+    }
 
+    .education-entry {
+      padding-left: 1rem;
+
+      .education-header {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .education-name {
+          font-weight: bold;
+        }
+
+        .education-details {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          span {
+            align-items: flex-end;
+          }
+        }
+      }
+    }
   }
 }
 
