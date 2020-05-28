@@ -32,7 +32,6 @@ class Navbar extends Component {
 
   componentDidMount() {
     document.addEventListener('click', this.onMouseClickEvent);
-    console.log(this.props.location.pathname);
     this.props.selectActivePage(this.props.location.pathname);
   }
 
@@ -47,8 +46,7 @@ class Navbar extends Component {
     }
   }
 
-  onMenuIconClick(e) {
-    console.log(e);
+  onMenuIconClick() {
     this.setState((prevState) => ({ showNavMenu: !prevState.showNavMenu }));
   }
 
