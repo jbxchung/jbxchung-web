@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScaledTimeline from 'react-scaled-timeline';
 
 import './Experience.scss';
 
@@ -7,6 +8,7 @@ class Experience extends Component {
     return (
       <div className="experience-container">
         Experience timeline placeholder
+        <ScaledTimeline />
       </div>
     );
   }

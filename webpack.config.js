@@ -5,11 +5,12 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
-  devtool: 'source-map',
+  devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   module: {
     rules: [
       {
         test: /\.(js|jsx|mjs)$/,
+        include: [path.resolve(__dirname, 'src')],
         enforce: 'pre',
         use: [
           {

@@ -48,7 +48,8 @@
     "react-html-parser": "^2.0.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "react-scaled-timeline": "^1.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"
