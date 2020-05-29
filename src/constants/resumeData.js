@@ -162,7 +162,10 @@ const ResumeData = {
               end: Date.UTC(2018, 8),
             },
             location: 'Jersey City, NJ',
-            description: [{ text: 'Designed and developed a Client Relationship Management platform and created a UX Design System' }],
+            description: [
+              { text: 'Designed and developed a Client Relationship Management platform' },
+              { text: 'Created a UX Design System' },
+            ],
           },
           {
             title: 'Summer Analyst Intern',
@@ -171,7 +174,7 @@ const ResumeData = {
               end: Date.UTC(2016, 8),
             },
             location: 'New York, NY',
-            description: [{ text: 'Designed and developed a Client Relationship Management platform and created a UX Design System' }],
+            description: [{ text: 'Developed and integrated a WPF control for in-house traders' }],
           },
         ],
       },

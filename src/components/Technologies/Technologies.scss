@@ -2,7 +2,7 @@
 
 .tech-container {
   flex: 1;
-  padding: 4rem;
+  padding: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@
           padding-left: 0.5rem;
           border-left: 0.2rem solid $text-accent-color-orange;
 
-          &::after {
+          &::before {
             content: "";
             position: absolute;
             left: 0;

@@ -1,9 +1,60 @@
-/*.experience-container {
-  padding: 1rem;
+@import '../../styles/variables.scss';
+
+.experience-container {
+  padding: 6rem;
   display: flex;
   flex-direction: column;
 
   .experience-timeline {
     flex: 1;
+
+    .job-card {
+      margin: 1rem;
+      width: 35rem;
+
+      h3 {
+        margin: 0;
+      }
+
+      .description-section {
+        
+
+        .description-text {
+          position: relative;
+          margin-left: 1rem;
+          padding-left: 0.7rem;
+
+          &::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+          }
+        }
+      }
+    }
   }
-}*/
+}
+
+@media screen and (max-width: $screen-breakpoint-medium) {
+  .experience-container {
+    padding: 4rem;
+
+    .experience-timeline {
+      .job-card {
+        width: 20rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-breakpoint-small) {
+  .experience-container {
+    padding: 2rem;
+
+    .experience-timeline {
+      .job-card {
+        width: 20rem;
+      }
+    }
+  }
+}

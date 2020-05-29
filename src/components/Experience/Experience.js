@@ -30,8 +30,8 @@ class Experience extends Component {
 
   buildNestedDescription(description) {
     return description.map((desc) => (
-      <div className="description-segment" key={hashCode(desc.text)}>
-        <span className="desc-text">{desc.text}</span>
+      <div className="description-text" key={hashCode(desc.text)}>
+        <span>{desc.text}</span>
         {desc.description && this.buildNestedDescription(desc.description)}
       </div>
     ));
@@ -43,7 +43,7 @@ class Experience extends Component {
       <div className="job-card">
         <h3>{data.title}</h3>
         <p>{JSON.stringify(data.dateRange)}</p>
-        <div>{this.buildNestedDescription(data.description)}</div>
+        <div className="description-section">{this.buildNestedDescription(data.description)}</div>
       </div>
     );
   }
