@@ -130,8 +130,8 @@ const ResumeData = {
           {
             title: 'Assistant Vice President',
             dateRange: {
-              start: Date.UTC(2019, 8),
-              end: null,
+              start: new Date(2019, 8),
+              end: new Date(),
             },
             location: 'Jersey City, NJ',
             description: [
@@ -176,13 +176,16 @@ const ResumeData = {
         ],
       },
       {
-        name: 'DevXApp - Android Application Developer',
-        dateRange: {
-          start: Date.UTC(2014, 9),
-          end: Date.UTC(2015, 7),
-        },
-        location: 'Boston, MA',
-        description: [{ text: 'Developed an Android application for univeristy-wide food services at BU' }],
+        name: 'DevXApp',
+        jobs: [{
+          title: 'Android Application Developer',
+          dateRange: {
+            start: Date.UTC(2014, 9),
+            end: Date.UTC(2015, 7),
+          },
+          location: 'Boston, MA',
+          description: [{ text: 'Developed an Android application for univeristy-wide food services at BU' }],
+        }],
       },
     ],
   },
