@@ -3,6 +3,7 @@ import ScaledTimeline from 'react-scaled-timeline';
 
 import ResumeData from '../../constants/resumeData';
 import hashCode from '../../utils/hashCode';
+import shortDate from '../../utils/shortDate';
 
 import './Experience.scss';
 
@@ -11,12 +12,34 @@ class Experience extends Component {
     super(props);
 
     const timelineData = [];
+    // add work experience
     ResumeData.experience.companies.forEach((company) => {
-      company.jobs.forEach((job) => {
+      company.jobs.forEach((job, jobIndex) => {
+        const jobData = (
+          ({ title, location, description }) => ({ title, location, description })
+        )(job);
         timelineData.push({
-          data: job,
+          data: {
+            company: jobIndex === 0 ? company.name : (company.shortName || company.name),
+            jobData,
+          },
           dateRange: job.dateRange,
         });
+      });
+    });
+
+    // add life events
+    ResumeData.experience.events.forEach((event) => {
+      timelineData.push({
+        data: { text: event.name },
+        dateRange: {
+          start: event.date,
+        },
+        renderer: (entry) => (
+          <div className="event-card">
+            {`${shortDate(new Date(entry.dateRange.start))} - ${entry.data.text}`}
+          </div>
+        ),
       });
     });
 
@@ -38,12 +61,17 @@ class Experience extends Component {
   }
 
   renderJob(entry) {
-    const { data } = entry;
+    const { data, dateRange } = entry;
+    const { jobData } = data;
+
+    const startDate = shortDate(new Date(dateRange.start));
+    const endDate = jobData.isCurrent ? 'current' : shortDate(new Date(dateRange.end));
+
     return (
       <div className="job-card">
-        <h3>{data.title}</h3>
-        <p>{JSON.stringify(data.dateRange)}</p>
-        <div className="description-section">{this.buildNestedDescription(data.description)}</div>
+        <h3>{`${data.company} - ${jobData.title}`}</h3>
+        <p>{`${startDate} - ${endDate}`}</p>
+        <div className="description-section">{this.buildNestedDescription(jobData.description)}</div>
       </div>
     );
   }

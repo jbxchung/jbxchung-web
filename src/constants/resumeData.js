@@ -126,13 +126,15 @@ const ResumeData = {
     companies: [
       {
         name: 'Citi Institutional Clients Group',
+        shortName: 'Citi',
         jobs: [
           {
             title: 'Assistant Vice President',
             dateRange: {
-              start: new Date(2019, 8),
-              end: new Date(),
+              start: Date.UTC(2019, 8),
+              end: new Date().getTime(),
             },
+            isCurrent: true,
             location: 'Jersey City, NJ',
             description: [
               {
@@ -189,6 +191,12 @@ const ResumeData = {
           location: 'Boston, MA',
           description: [{ text: 'Developed an Android application for univeristy-wide food services at BU' }],
         }],
+      },
+    ],
+    events: [
+      {
+        name: 'Graduated from Boston University',
+        date: Date.UTC(2017, 1),
       },
     ],
   },
