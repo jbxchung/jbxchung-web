@@ -15,9 +15,10 @@ class Experience extends Component {
     // add work experience
     ResumeData.experience.companies.forEach((company) => {
       company.jobs.forEach((job, jobIndex) => {
-        const jobData = (
+        /* const jobData = (
           ({ title, location, description }) => ({ title, location, description })
-        )(job);
+        )(job); */
+        const jobData = job;
         timelineData.push({
           data: {
             company: jobIndex === 0 ? company.name : (company.shortName || company.name),
@@ -65,7 +66,7 @@ class Experience extends Component {
     const { jobData } = data;
 
     const startDate = shortDate(new Date(dateRange.start));
-    const endDate = jobData.isCurrent ? 'current' : shortDate(new Date(dateRange.end));
+    const endDate = jobData.isCurrent ? 'Current' : shortDate(new Date(dateRange.end));
 
     return (
       <div className="job-card">
