@@ -8,26 +8,37 @@
   .experience-timeline {
     flex: 1;
 
-    .job-card {
-      margin: 1rem;
-      width: 35rem;
+    // modify default styles
+    .scaled-timeline-entry {
+      opacity: 0.5;
+      z-index: 1;
 
-      h3 {
-        margin: 0;
+      &:hover {
+        opacity: 1;
+        z-index: 2;
       }
 
-      .description-section {
-        
+      .job-card {
+        margin: 1rem;
+        width: 35rem;
 
-        .description-text {
-          position: relative;
-          margin-left: 1rem;
-          padding-left: 0.7rem;
+        h3 {
+          margin: 0;
+        }
 
-          &::before {
-            content: "•";
-            position: absolute;
-            left: 0;
+        .description-section {
+          
+
+          .description-text {
+            position: relative;
+            margin-left: 1rem;
+            padding-left: 0.7rem;
+
+            &::before {
+              content: "•";
+              position: absolute;
+              left: 0;
+            }
           }
         }
       }
@@ -45,8 +56,10 @@
     padding: 4rem;
 
     .experience-timeline {
-      .job-card {
-        width: 20rem;
+      .scaled-timeline-entry {
+        .job-card {
+          width: 20rem;
+        }
       }
     }
   }
@@ -57,8 +70,10 @@
     padding: 2rem;
 
     .experience-timeline {
-      .job-card {
-        width: 20rem;
+      .scaled-timeline-entry {
+        .job-card {
+          width: 20rem;
+        }
       }
     }
   }

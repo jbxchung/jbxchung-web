@@ -51,14 +51,16 @@ class Navbar extends Component {
   }
 
   onNavbarItemClick(newPageId) {
+    console.log(newPageId);
     this.props.selectActivePage(newPageId);
   }
 
   render() {
+    /* eslint-disable no-return-assign */
     return (
       <div className="navbar">
         <div className="navbar-left">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" className="home-logo" onClick={() => window.location = '/'} />
         </div>
         <div ref={this.navbarContentRef} className="navbar-content">
           <MenuIcon viewBox="0 0 24 24" onClick={this.onMenuIconClick} />

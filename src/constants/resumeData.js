@@ -8,12 +8,11 @@ const ResumeData = {
         header: 'Bio',
         content: ReactHtmlParser(`
           <p>
-            My name is Jiehong Brandon Xavier Chung, but I go by Brandon. Currently I am working in the financial technology space, 
+            My name is Jiehong Brandon Xavier Chung, but I go by Brandon. I currently work in the financial technology space, 
             developing enterprise web applications and automating trade workflows.
           </p>
           <p>
-            In my free time, I have a few interests - from tinkering with electronics, to cooking all sorts of foods from different regions
-            around the world, to playing the piano and violin. As for physical activities, I also enjoy hiking, table tennis, and Taekwondo.
+            In my free time, I have a few interests - from tinkering with electronics, to cooking different kinds of food, to playing the piano and violin. As for physical activities, I also enjoy hiking, table tennis, and Taekwondo.
           </p>
         `),
       },
@@ -41,11 +40,11 @@ const ResumeData = {
           content.map((education) => (
             <div className="education-entry" key={education.name}>
               <div className="education-header" key={education.name}>
-                <div className="education-name">{education.name}</div>
-                <div className="education-details">
-                  <span>{education.graduationDate}</span>
-                  <span>{education.location}</span>
-                </div>
+                <span className="education-name">{education.name}</span>
+                <span className="education-details">
+                  {` - ${education.graduationDate}`}
+                  {` - ${education.location}`}
+                </span>
               </div>
               {education.description.map((line) => <p key={line}>{ReactHtmlParser(line)}</p>)}
             </div>

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --mode development --host 0.0.0.0",
     "build": "webpack --mode development"
   },
   "author": "",
@@ -45,11 +45,12 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-recaptcha": "^2.0.1",
     "react-html-parser": "^2.0.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "react-scaled-timeline": "^1.0.0"
+    "react-scaled-timeline": "^1.0.0",
+    "redux": "^4.0.5"
   },
   "eslintConfig": {
     "extends": "react-app"

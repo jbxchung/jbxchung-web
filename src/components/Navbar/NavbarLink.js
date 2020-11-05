@@ -17,7 +17,7 @@ class NavbarLink extends Component {
   render() {
     return (
       <div className={`navbar-link${this.props.active ? ' active' : ''}`} onClick={this.onClick}>
-        <Link to={this.props.target}>{this.props.title}</Link>
+        <Link ref={this.linkRef} to={this.props.target}>{this.props.title}</Link>
       </div>
     );
   }
