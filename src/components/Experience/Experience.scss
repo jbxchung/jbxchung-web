@@ -10,8 +10,12 @@
 
     // modify default styles
     .scaled-timeline-entry {
-      opacity: 0.5;
+      opacity: 0.75;
       z-index: 1;
+
+      &:first-child {
+        opacity: 1;
+      }
 
       &:hover {
         opacity: 1;

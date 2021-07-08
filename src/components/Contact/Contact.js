@@ -1,17 +1,43 @@
 import React, { Component } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import siteKey from '../../../keys/recaptchaSiteKey';
+
+import siteKey from '../../constants/reCaptchaPubKey';
 
 import './Contact.scss';
 
+
 class Contact extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showEmail: false,
+    };
+
+    this.onCaptchaEntered = this.onCaptchaEntered.bind(this);
+  }
+
+  onCaptchaEntered(token) {
+    // if is null, this captcha has expired
+    if (token) {
+      console.log(token);
+      this.setState({ showEmail: true });
+    }
+  }
+
   render() {
-    return (
-      <div className="about-container">
+    const renderContent = this.state.showEmail
+      ? <a className="email-link" href="mailto:brandon@jbxchung.dev">brandon@jbxchung.dev</a>
+      : (
         <ReCAPTCHA
           sitekey={siteKey}
-          onChange={(e) => console.log(e)}
+          onChange={this.onCaptchaEntered}
         />
+      );
+
+    return (
+      <div className="about-container">
+        {renderContent}
       </div>
     );
   }

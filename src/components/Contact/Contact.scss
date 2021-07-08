@@ -1,0 +1,9 @@
+@import '../../styles/variables.scss';
+
+.email-link {
+    color: $page-default-font-color;
+
+    &:hover, &:active {
+        color: $navbar-link-hover-text-color;
+    }
+}
