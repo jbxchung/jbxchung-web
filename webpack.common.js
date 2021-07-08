@@ -1,11 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
 module.exports = {
   entry: './src/index.js',
-  mode: 'development',
-  devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   module: {
     rules: [
       {
@@ -73,12 +72,4 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'bundle.js',
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'public/'),
-    port: 3000,
-    publicPath: 'http://localhost:3000/dist/',
-    historyApiFallback: true,
-    disableHostCheck: true,
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
 };
