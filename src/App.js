@@ -17,7 +17,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      pages: Object.keys(Pages).map((pageName) => Pages[pageName]),
+      pages: Object.keys(Pages).map(pageName => Pages[pageName]),
     };
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
               {
                 this.state.pages.map((page) => {
                   if (Array.isArray(page.url)) {
-                    return page.url.map((url) => (
+                    return page.url.map(url => (
                       <Route exact path={url} key={page.url} component={page.component} />
                     ));
                   }

@@ -36,8 +36,8 @@ const ResumeData = {
             ],
           },
         ],
-        render: (content) => (
-          content.map((education) => (
+        render: content => (
+          content.map(education => (
             <div className="education-entry" key={education.name}>
               <div className="education-header" key={education.name}>
                 <span className="education-name">{education.name}</span>
@@ -46,7 +46,7 @@ const ResumeData = {
                   {` - ${education.location}`}
                 </span>
               </div>
-              {education.description.map((line) => <p key={line}>{ReactHtmlParser(line)}</p>)}
+              {education.description.map(line => <p key={line}>{ReactHtmlParser(line)}</p>)}
             </div>
           ))
         ),

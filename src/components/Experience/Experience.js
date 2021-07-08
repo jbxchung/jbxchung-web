@@ -36,7 +36,7 @@ class Experience extends Component {
         dateRange: {
           start: event.date,
         },
-        renderer: (entry) => (
+        renderer: entry => (
           <div className="event-card">
             {`${shortDate(new Date(entry.dateRange.start))} - ${entry.data.text}`}
           </div>
@@ -53,7 +53,7 @@ class Experience extends Component {
   }
 
   buildNestedDescription(description) {
-    return description.map((desc) => (
+    return description.map(desc => (
       <div className="description-text" key={hashCode(desc.text)}>
         <span>{desc.text}</span>
         {desc.description && this.buildNestedDescription(desc.description)}

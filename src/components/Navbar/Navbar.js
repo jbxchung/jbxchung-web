@@ -47,11 +47,10 @@ class Navbar extends Component {
   }
 
   onMenuIconClick() {
-    this.setState((prevState) => ({ showNavMenu: !prevState.showNavMenu }));
+    this.setState(prevState => ({ showNavMenu: !prevState.showNavMenu }));
   }
 
   onNavbarItemClick(newPageId) {
-    console.log(newPageId);
     this.props.selectActivePage(newPageId);
   }
 

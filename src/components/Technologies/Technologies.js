@@ -19,7 +19,7 @@ class Technologies extends Component {
 
 
   buildNestedItems(items) {
-    return items.map((item) => (
+    return items.map(item => (
       <div className="item" key={hashCode(item.name)}>
         <span className="item-label">{item.name}</span>
         {item.experience && ` - ${item.experience}`}

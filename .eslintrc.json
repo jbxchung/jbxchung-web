@@ -3,6 +3,7 @@
     "airbnb"
   ],
   "rules": {
+    "arrow-parens": ["warn", "as-needed", { "requireForBlockBody": true }],
     "prefer-destructuring": "off",
     "spaced-comment": "error",
     "func-names": "off",

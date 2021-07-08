@@ -20,8 +20,15 @@ class Contact extends Component {
   onCaptchaEntered(token) {
     // if is null, this captcha has expired
     if (token) {
-      console.log(token);
-      this.setState({ showEmail: true });
+      fetch('/api/validateRecaptcha', {
+        method: 'POST',
+        requestBody: {
+          token,
+        },
+      }).then(res => res.json()).then((response) => {
+        console.log(response);
+        this.setState({ showEmail: true });
+      });
     }
   }
 
