@@ -1,7 +1,6 @@
 FROM node:latest as build
 
 WORKDIR /app
-RUN apk update && apk add python make g++
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
