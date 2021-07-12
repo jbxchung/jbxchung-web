@@ -4,7 +4,7 @@ WORKDIR /app
 RUN apt-get install python3
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install --legacy-peer-deps
+RUN npm install
 COPY . ./
 
 RUN npm run build
