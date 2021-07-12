@@ -1,7 +1,7 @@
 FROM node:latest as build
 
 WORKDIR /app
-RUN sudo apt-get install python3
+RUN apt-get install python3
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
