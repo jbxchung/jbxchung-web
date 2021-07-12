@@ -12,6 +12,7 @@ class Contact extends Component {
 
     this.state = {
       showEmail: false,
+      recaptchaError: false,
     };
 
     this.onCaptchaEntered = this.onCaptchaEntered.bind(this);
@@ -22,25 +23,52 @@ class Contact extends Component {
     if (token) {
       fetch('/api/validateRecaptcha', {
         method: 'POST',
-        requestBody: {
-          token,
+        headers: {
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          token,
+        }),
       }).then(res => res.json()).then((response) => {
-        console.log(response);
-        this.setState({ showEmail: true });
+        if (response.status) {
+          this.setState({ showEmail: true });
+        } else {
+          this.setState({
+            showEmail: false,
+            recaptchaError: true,
+          });
+        }
+      }).catch((err) => {
+        console.error(err);
       });
     }
   }
 
   render() {
-    const renderContent = this.state.showEmail
-      ? <a className="email-link" href="mailto:brandon@jbxchung.dev">brandon@jbxchung.dev</a>
-      : (
-        <ReCAPTCHA
-          sitekey={siteKey}
-          onChange={this.onCaptchaEntered}
-        />
+    let renderContent = (
+      <ReCAPTCHA
+        sitekey={siteKey}
+        onChange={this.onCaptchaEntered}
+      />
+    );
+
+    if (this.state.showEmail) {
+      renderContent = (
+        <span>
+          Email me at&nbsp;
+          <a className="email-link" href="mailto:brandon@jbxchung.dev">
+            brandon@jbxchung.dev
+          </a>
+          !
+        </span>
       );
+    } else if (this.state.recaptchaError) {
+      renderContent = (
+        <div>
+          Recaptcha validation error - please refresh the page to try again.
+        </div>
+      );
+    }
 
     return (
       <div className="about-container">
