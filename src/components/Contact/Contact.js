@@ -5,7 +5,6 @@ import siteKey from '../../constants/reCaptchaPubKey';
 
 import './Contact.scss';
 
-
 class Contact extends Component {
   constructor(props) {
     super(props);

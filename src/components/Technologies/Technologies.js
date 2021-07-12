@@ -17,7 +17,6 @@ class Technologies extends Component {
     this.buildSection = this.buildSection.bind(this);
   }
 
-
   buildNestedItems(items) {
     return items.map(item => (
       <div className="item" key={hashCode(item.name)}>
