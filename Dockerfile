@@ -1,20 +1,21 @@
-# pull the base image
-FROM node:latest
+FROM node:latest as build
 
-# set the working direction
 WORKDIR /app
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
+RUN apk add g++ make python
 COPY package.json ./
 COPY package-lock.json ./
-
 RUN npm install
-
-# add app
 COPY . ./
 
-# start app
-CMD ["npm", "start"]
+RUN npm run build
+
+
+
+FROM alpine:latest
+
+WORKDIR /app
+COPY --from=build /app/dist /app/dist
+COPY --from=build /app/public /app/public
+
+EXPOSE 17713
+ENTRYPOINT [ "node ./server/index.js" ]
