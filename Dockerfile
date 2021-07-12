@@ -1,5 +1,5 @@
 # pull the base image
-FROM node:alpine
+FROM node:latest
 
 # set the working direction
 WORKDIR /app
@@ -9,7 +9,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY package.json ./
-
 COPY package-lock.json ./
 
 RUN npm install
