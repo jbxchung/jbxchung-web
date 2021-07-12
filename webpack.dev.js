@@ -10,8 +10,8 @@ module.exports = merge(common, {
   devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public/'),
-    port: 3000,
-    publicPath: 'http://localhost:3000/dist/',
+    port: 17713,
+    publicPath: 'http://localhost:17713/dist/',
     historyApiFallback: true,
     disableHostCheck: true,
   },
