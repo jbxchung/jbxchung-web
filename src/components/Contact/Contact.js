@@ -21,7 +21,7 @@ class Contact extends Component {
   onCaptchaEntered(token) {
     // if is null, this captcha has expired
     if (token) {
-      fetch('/api/validateRecaptcha', {
+      fetch('/api/recaptcha/validate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
