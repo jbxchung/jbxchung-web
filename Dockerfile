@@ -1,11 +1,13 @@
 # Stage 1 - build react app
-FROM node:8-alpine as build
+FROM node:12-alpine as build
 
 WORKDIR /app
+
 RUN apk add python make gcc g++
+
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 COPY . ./
 
 RUN npm run build
