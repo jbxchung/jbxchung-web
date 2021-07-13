@@ -3,9 +3,9 @@
 Private repository for personal web app front end (React app) at jbxchung.dev
 
 ## Build Docker image
-'''bash
+```bash
 docker build -t jbxchung/personal-webapp .
-'''
+```
 
 ## Run container
 connect host port 9000 (for example) to container port 17713
