@@ -14,7 +14,7 @@ RUN npm run build
 
 
 # Stage 2 - run server
-FROM node:16-alpine
+FROM node:12-alpine
 
 WORKDIR /app
 COPY package.json ./
