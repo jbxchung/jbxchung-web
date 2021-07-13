@@ -2,6 +2,7 @@ FROM node:latest as build
 
 WORKDIR /app
 RUN apt-get install python3
+RUN apt-get install -y build-essential
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
