@@ -5,11 +5,11 @@ const app = express();
 const config = require('./config');
 
 // serve static resources for webapp at /dist
-app.use('/dist', express.static(path.join(__dirname, '../../personal-webapp/dist')));
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 // pass through all other get request paths for the webapp to handle
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../personal-webapp/public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 app.listen(config.port, () => {
