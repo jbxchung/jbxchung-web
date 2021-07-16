@@ -44,12 +44,30 @@ class Experience extends Component {
       });
     });
 
+    timelineData.sort((td1, td2) => (
+      td2.dateRange.start - td1.dateRange.start
+    ));
+
     this.state = {
       timelineData,
+      windowWidth: window.innerWidth,
     };
 
     this.buildNestedDescription = this.buildNestedDescription.bind(this);
     this.renderJob = this.renderJob.bind(this);
+    this.updateWindowSize = this.updateWindowSize.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateWindowSize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowSize);
+  }
+
+  updateWindowSize(e) {
+    this.setState({ windowWidth: e.target.innerWidth });
   }
 
   buildNestedDescription(description) {
@@ -83,6 +101,7 @@ class Experience extends Component {
         <ScaledTimeline
           className="experience-timeline"
           colorCycle={['#c9606e', '#c38f61', '#c2c86b', '#71c86e', '#4ab6d3', '#4d7ad4', '#6a59d7', '#cc64da', '#e0e082']}
+          displayMode={this.state.windowWidth < 800 ? 'inline' : 'popout'}
           entryRenderer={this.renderJob}
           timelineData={this.state.timelineData}
         />
