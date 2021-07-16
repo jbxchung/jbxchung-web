@@ -1,4 +1,4 @@
-# Personal Web App
+# jbxchung-web
 
 Private repository for personal web app front end (React app) at jbxchung.dev
 
