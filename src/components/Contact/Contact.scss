@@ -1,5 +1,56 @@
 @import '../../styles/variables.scss';
 
+.contact-container {
+    flex: 1;
+    padding: 6rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    .contact-form {
+        width: 100%;
+
+        .contact-field {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            
+            .contact-field-label {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+            
+            .contact-field-input {
+                width: 100%;
+                padding:1rem;
+                font-size: 1rem;
+                font-family: inherit;
+                
+                border: none;
+                border-radius: 0.25rem;
+            }
+
+            textarea {
+                min-height: 12rem;
+                resize: none;
+            }
+        }
+
+        .submit-button {
+            padding: 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            background-color: $button-primary-background-color;
+            color: $page-default-font-color;
+            font-family: inherit;
+            cursor: pointer;
+
+            &:active {
+                background: $button-primary-background-color-active;
+            }
+        }
+    }
+}
+
 .email-link {
     color: $page-default-font-color;
 

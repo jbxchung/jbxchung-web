@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import PropTypes from 'prop-types';
 
 import siteKey from '../../constants/reCaptchaPubKey';
 
@@ -10,14 +11,17 @@ class Contact extends Component {
     super(props);
 
     this.state = {
-      showEmail: false,
-      recaptchaError: false,
+      recaptchaSuccess: false,
+      formData: {},
     };
 
     this.onCaptchaEntered = this.onCaptchaEntered.bind(this);
+    this.onFieldChanged = this.onFieldChanged.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   onCaptchaEntered(token) {
+    this.setState({ recaptchaSuccess: true });
     // if is null, this captcha has expired
     if (token) {
       fetch('/api/recaptcha/validate', {
@@ -30,12 +34,9 @@ class Contact extends Component {
         }),
       }).then(res => res.json()).then((response) => {
         if (response.status) {
-          this.setState({ showEmail: true });
+          this.setState({ recaptchaSuccess: true });
         } else {
-          this.setState({
-            showEmail: false,
-            recaptchaError: true,
-          });
+          this.setState({ recaptchaSuccess: false });
         }
       }).catch((err) => {
         console.error(err);
@@ -43,38 +44,69 @@ class Contact extends Component {
     }
   }
 
+  onFieldChanged(fieldName, e) {
+    if (e && e.target) {
+      const { value } = e.target;
+      this.setState(prevState => ({
+        formData: {
+          ...prevState.formData,
+          [fieldName]: value,
+        },
+      }), () => console.log(this.state.formData));
+    }
+  }
+
+  submitForm() {
+    console.log('todo: submit form');
+  }
+
   render() {
-    let renderContent = (
+    const formSubmitArea = this.state.recaptchaSuccess ? (
+      <button className="submit-button" onClick={this.submitForm} disabled={this.props.messageSent}>Send Message</button>
+    ) : (
       <ReCAPTCHA
         sitekey={siteKey}
         onChange={this.onCaptchaEntered}
       />
     );
 
-    if (this.state.showEmail) {
-      renderContent = (
-        <span>
-          Email me at&nbsp;
-          <a className="email-link" href="mailto:brandon@jbxchung.dev">
-            brandon@jbxchung.dev
-          </a>
-          !
-        </span>
-      );
-    } else if (this.state.recaptchaError) {
-      renderContent = (
-        <div>
-          Recaptcha validation error - please refresh the page to try again.
-        </div>
-      );
-    }
-
     return (
-      <div className="about-container">
-        {renderContent}
+      <div className="contact-container">
+        <div className="contact-form">
+          <div className="contact-field">
+            <label className="contact-field-label" htmlFor="contact-email">Email:</label>
+            <input
+              id="contact-email"
+              className="contact-field-input"
+              value={this.state.fromUser}
+              onChange={e => this.onFieldChanged('fromUser', e)}
+              placeholder="Your email"
+            />
+          </div>
+
+          <div className="contact-field">
+            <label className="contact-field-label" htmlFor="contact-message">Message:</label>
+            <textarea
+              id="contact-message"
+              className="contact-field-input"
+              value={this.state.userMessage}
+              onChange={e => this.onFieldChanged('message', e)}
+              placeholder="Enter a message"
+            />
+          </div>
+          {formSubmitArea}
+        </div>
       </div>
     );
   }
 }
+
+Contact.propTypes = {
+  messageSent: PropTypes.bool,
+};
+
+Contact.defaultProps = {
+  messageSent: false,
+};
 
 export default Contact;
