@@ -50,7 +50,13 @@ export function sendContactMessage(formData) {
     dispatch(contactMessageSent('submitted'));
 
     try {
-      const res = await fetch('/api/contact/sendMessage');
+      const res = await fetch('/api/contact/sendMessage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: formData,
+      });
       const apiResponse = await res.json();
 
       dispatch(contactMessageSent(apiResponse.status ? 'success' : 'fail'));
