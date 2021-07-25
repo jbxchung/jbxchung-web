@@ -45,7 +45,6 @@ export function contactMessageSent(sendMessageStatus) {
 }
 
 export function sendContactMessage(formData) {
-  console.log(formData);
   return async function (dispatch) {
     dispatch(contactMessageSent('submitted'));
 
