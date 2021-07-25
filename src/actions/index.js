@@ -37,28 +37,32 @@ export function validateRecaptcha(token) {
   };
 }
 
-export function contactMessageSent(apiResponse) {
+export function contactMessageSent(sendMessageStatus) {
   return {
     type: actionTypes.SEND_CONTACT_FORM,
-    apiResponse,
+    sendMessageStatus,
   };
 }
 
 export function sendContactMessage(formData) {
   console.log(formData);
   return async function (dispatch) {
-    dispatch({
-      type: actionTypes.SEND_CONTACT_FORM,
-      apiResponse: { status: true },
-    });
-    /*
+    dispatch(contactMessageSent('submitted'));
+
     try {
       const res = await fetch('/api/contact/sendMessage');
-      const apiResponse = res.json();
-      dispatch(contactMessageSent(apiResponse));
+      const apiResponse = await res.json();
+
+      dispatch(contactMessageSent(apiResponse.status ? 'success' : 'fail'));
     } catch (err) {
       console.error(err);
+      dispatch(contactMessageSent('fail'));
     }
-    */
+  };
+}
+
+export function resetContactForm() {
+  return {
+    type: actionTypes.RESET_CONTACT_FORM,
   };
 }

@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 import siteKey from '../../constants/reCaptchaPubKey';
 
 import './Contact.scss';
-import { sendContactMessage, validateRecaptcha } from '../../actions';
+import {
+  resetContactForm,
+  sendContactMessage,
+  validateRecaptcha,
+} from '../../actions';
 
 class Contact extends Component {
   constructor(props) {
@@ -16,8 +20,8 @@ class Contact extends Component {
 
     this.state = {
       formData: {},
-      messageSent: false,
-      recaptchaSuccess: false,
+      sendMessageStatus: this.props.sendMessageStatus,
+      recaptchaSuccess: this.props.recaptchaSuccess,
     };
 
     this.onCaptchaEntered = this.onCaptchaEntered.bind(this);
@@ -25,14 +29,17 @@ class Contact extends Component {
     this.submitForm = this.submitForm.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.resetContactForm();
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(nextProps, prevState);
     if (nextProps.recaptchaSuccess !== prevState.recaptchaSuccess) {
       return { recaptchaSuccess: nextProps.recaptchaSuccess };
     }
 
-    if (nextProps.messageSent !== prevState.messageSent) {
-      return { messageSent: nextProps.messageSent };
+    if (nextProps.sendMessageStatus !== prevState.sendMessageStatus) {
+      return { sendMessageStatus: nextProps.sendMessageStatus };
     }
 
     return null;
@@ -59,27 +66,44 @@ class Contact extends Component {
   }
 
   render() {
+    const { recaptchaSuccess, sendMessageStatus } = this.state;
+
     let formSubmitArea = (
-      <button
-        className="submit-button"
-        onClick={this.submitForm}
-      >
-        Send Message
-      </button>
+      <ReCAPTCHA
+        sitekey={siteKey}
+        onChange={this.onCaptchaEntered}
+      />
     );
-    if (!this.state.recaptchaSuccess) {
+
+    if (recaptchaSuccess) {
       formSubmitArea = (
-        <ReCAPTCHA
-          sitekey={siteKey}
-          onChange={this.onCaptchaEntered}
-        />
+        <button
+          className="submit-button"
+          onClick={this.submitForm}
+        >
+          Send Message
+        </button>
       );
-    } else if (this.state.messageSent) {
-      formSubmitArea = (
-        <div className="message-submitted-confirmation">
-          Thanks for contacting me! I will generally reply within 48 hours.
-        </div>
-      );
+
+      if (sendMessageStatus) {
+        if (sendMessageStatus === 'success') {
+          formSubmitArea = (
+            <div className="message-submitted-confirmation">
+              Thanks for contacting me! I will generally reply within 48 hours.
+            </div>
+          );
+        } else if (sendMessageStatus === 'submitted') {
+          formSubmitArea = <button className="submit-button">Sending Message...</button>;
+        } else if (sendMessageStatus === 'fail') {
+          formSubmitArea = (
+            <div className="message-submitted-confirmation">
+              Looks like there was a problem sending this message, feel free to&nbsp;
+              <a className="email-link" href="mailto:brandon@jbxchung.dev">send me an email</a>
+              &nbsp;instead!
+            </div>
+          );
+        }
+      }
     }
 
     return (
@@ -93,6 +117,7 @@ class Contact extends Component {
               value={this.state.fromUser}
               onChange={e => this.onFieldChanged('fromUser', e)}
               placeholder="Your email"
+              disabled={!!sendMessageStatus}
             />
           </div>
 
@@ -104,6 +129,7 @@ class Contact extends Component {
               value={this.state.userMessage}
               onChange={e => this.onFieldChanged('message', e)}
               placeholder="Enter a message"
+              disabled={!!sendMessageStatus}
             />
           </div>
           {formSubmitArea}
@@ -114,25 +140,27 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-  messageSent: PropTypes.bool,
+  sendMessageStatus: PropTypes.string,
   recaptchaSuccess: PropTypes.bool.isRequired,
+  resetContactForm: PropTypes.func.isRequired,
   sendContactMessage: PropTypes.func.isRequired,
   validateRecaptcha: PropTypes.func.isRequired,
 };
 
 Contact.defaultProps = {
-  messageSent: false,
+  sendMessageStatus: null,
 };
 
 function mapStateToProps(state) {
   return {
-    messageSent: state.messageSent,
+    sendMessageStatus: state.sendMessageStatus,
     recaptchaSuccess: state.recaptchaSuccess,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    resetContactForm,
     sendContactMessage,
     validateRecaptcha,
   }, dispatch);
