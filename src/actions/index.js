@@ -54,7 +54,7 @@ export function sendContactMessage(formData) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: formData,
+        body: JSON.stringify(formData),
       });
       const apiResponse = await res.json();
 
