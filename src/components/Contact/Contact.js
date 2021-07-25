@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import ReCAPTCHA from 'react-google-recaptcha';
 import PropTypes from 'prop-types';
 
 import siteKey from '../../constants/reCaptchaPubKey';
 
 import './Contact.scss';
+import { sendContactMessage, validateRecaptcha } from '../../actions';
 
 class Contact extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      recaptchaSuccess: false,
       formData: {},
+      messageSent: false,
+      recaptchaSuccess: false,
     };
 
     this.onCaptchaEntered = this.onCaptchaEntered.bind(this);
@@ -20,28 +25,21 @@ class Contact extends Component {
     this.submitForm = this.submitForm.bind(this);
   }
 
-  onCaptchaEntered(token) {
-    this.setState({ recaptchaSuccess: true });
-    // if is null, this captcha has expired
-    if (token) {
-      fetch('/api/recaptcha/validate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token,
-        }),
-      }).then(res => res.json()).then((response) => {
-        if (response.status) {
-          this.setState({ recaptchaSuccess: true });
-        } else {
-          this.setState({ recaptchaSuccess: false });
-        }
-      }).catch((err) => {
-        console.error(err);
-      });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log(nextProps, prevState);
+    if (nextProps.recaptchaSuccess !== prevState.recaptchaSuccess) {
+      return { recaptchaSuccess: nextProps.recaptchaSuccess };
     }
+
+    if (nextProps.messageSent !== prevState.messageSent) {
+      return { messageSent: nextProps.messageSent };
+    }
+
+    return null;
+  }
+
+  onCaptchaEntered(token) {
+    this.props.validateRecaptcha(token);
   }
 
   onFieldChanged(fieldName, e) {
@@ -52,23 +50,37 @@ class Contact extends Component {
           ...prevState.formData,
           [fieldName]: value,
         },
-      }), () => console.log(this.state.formData));
+      }));
     }
   }
 
   submitForm() {
-    console.log('todo: submit form');
+    this.props.sendContactMessage(this.state.formData);
   }
 
   render() {
-    const formSubmitArea = this.state.recaptchaSuccess ? (
-      <button className="submit-button" onClick={this.submitForm} disabled={this.props.messageSent}>Send Message</button>
-    ) : (
-      <ReCAPTCHA
-        sitekey={siteKey}
-        onChange={this.onCaptchaEntered}
-      />
+    let formSubmitArea = (
+      <button
+        className="submit-button"
+        onClick={this.submitForm}
+      >
+        Send Message
+      </button>
     );
+    if (!this.state.recaptchaSuccess) {
+      formSubmitArea = (
+        <ReCAPTCHA
+          sitekey={siteKey}
+          onChange={this.onCaptchaEntered}
+        />
+      );
+    } else if (this.state.messageSent) {
+      formSubmitArea = (
+        <div className="message-submitted-confirmation">
+          Thanks for contacting me! I will generally reply within 48 hours.
+        </div>
+      );
+    }
 
     return (
       <div className="contact-container">
@@ -103,10 +115,27 @@ class Contact extends Component {
 
 Contact.propTypes = {
   messageSent: PropTypes.bool,
+  recaptchaSuccess: PropTypes.bool.isRequired,
+  sendContactMessage: PropTypes.func.isRequired,
+  validateRecaptcha: PropTypes.func.isRequired,
 };
 
 Contact.defaultProps = {
   messageSent: false,
 };
 
-export default Contact;
+function mapStateToProps(state) {
+  return {
+    messageSent: state.messageSent,
+    recaptchaSuccess: state.recaptchaSuccess,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    sendContactMessage,
+    validateRecaptcha,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

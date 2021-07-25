@@ -1,1 +1,3 @@
-export const SELECT_ACTIVE_PAGE = 'SELECT_ACTIVE_PAGE'; // eslint-disable-line import/prefer-default-export
+export const SELECT_ACTIVE_PAGE = 'SELECT_ACTIVE_PAGE';
+export const SEND_CONTACT_FORM = 'SEND_CONTACT_FORM';
+export const VALIDATE_RECAPTCHA = 'VALIDATE_RECAPTCHA';
