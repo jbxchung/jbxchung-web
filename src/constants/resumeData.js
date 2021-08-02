@@ -59,7 +59,7 @@ const ResumeData = {
       items: [
         {
           name: 'Javascript (ES6)',
-          experience: '4 years',
+          experience: '5 years',
           items: [
             { name: 'Enterprise web applications using React with redux and redux-saga' },
             { name: 'Rapid UI/UX prototyping with jQuery' },
@@ -69,7 +69,7 @@ const ResumeData = {
         },
         {
           name: 'HTML5, CSS3',
-          experience: '4 years',
+          experience: '5 years',
           items: [
             { name: 'SCSS/SASS/LESS' },
             { name: 'Bootstrap, CSS Grid, and Flexbox' },
@@ -82,7 +82,7 @@ const ResumeData = {
       items: [
         {
           name: 'Javascript (Node, Express)',
-          experience: '4 years',
+          experience: '5 years',
           items: [
             { name: 'REST APIs and services' },
             { name: 'Data aggregation/filtering with lodash' },
@@ -90,7 +90,7 @@ const ResumeData = {
         },
         {
           name: 'Java (Maven, Spring)',
-          experience: '2 years',
+          experience: '3 years',
           items: [
             { name: 'REST APIs and websocket endpoints' },
             { name: 'Service implementations and database connections' },
@@ -98,7 +98,7 @@ const ResumeData = {
         },
         {
           name: 'MongoDB, SQL',
-          experience: '2 years',
+          experience: '3 years',
         },
       ],
     },
@@ -115,9 +115,11 @@ const ResumeData = {
     sourceControlDevOps: {
       header: 'Source Control + DevOps',
       items: [
-        { name: 'Git', experience: '7 years' },
-        { name: 'TeamCity, uDeploy', experience: '2 years' },
+        { name: 'Git', experience: '8 years' },
+        { name: 'TeamCity, uDeploy', experience: '3 years' },
         { name: 'SVN (TortoiseSVN)', experience: '1 year' },
+        { name: 'Ansible' },
+        { name: 'Docker' },
       ],
     },
   },
