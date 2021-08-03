@@ -10,10 +10,6 @@ export function selectActivePage(newPageId) {
 
 export function validateRecaptcha(token) {
   return async function (dispatch) {
-    dispatch({
-      type: actionTypes.VALIDATE_RECAPTCHA,
-      recaptchaSuccess: true,
-    });
     try {
       const resp = await fetch('/api/recaptcha/validate', {
         method: 'POST',
