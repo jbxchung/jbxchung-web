@@ -27,23 +27,24 @@
 
       .education-header {
         margin-top: 1rem;
+        font-weight: bold;
         //display: flex;
         //justify-content: space-between;
         //align-items: center;
+      }
 
-        .education-name {
-          font-weight: bold;
+      .education-details {
+        //display: flex;
+        //flex-direction: column;
+        //align-items: flex-end;
+
+        span {
+          align-items: flex-end;
         }
+      }
 
-        .education-details {
-          //display: flex;
-          //flex-direction: column;
-          //align-items: flex-end;
-
-          span {
-            align-items: flex-end;
-          }
-        }
+      p {
+        font-size: 1.2rem;
       }
     }
   }
