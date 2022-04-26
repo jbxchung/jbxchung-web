@@ -6,6 +6,22 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    .contact-redirect {
+        font-size: 1.5rem;
+
+        .contact-link {
+            margin: 2rem;
+            display: block;
+            font-size: 3rem;
+            color: $page-default-font-color;
+            text-align: center;
+
+            &:hover {
+                color: $link-hover-text-color;
+            }
+        }
+    }
     
     .contact-form {
         width: 100%;
@@ -29,7 +45,7 @@
                 border-radius: 0.25rem;
 
                 &:disabled {
-                    background: #ccc;
+                    background: $page-default-font-hover-color;
                 }
             }
 

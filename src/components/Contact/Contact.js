@@ -26,6 +26,7 @@ class Contact extends Component {
 
     this.onCaptchaEntered = this.onCaptchaEntered.bind(this);
     this.onFieldChanged = this.onFieldChanged.bind(this);
+    this.renderEmailForm = this.renderEmailForm.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
@@ -65,7 +66,7 @@ class Contact extends Component {
     this.props.sendContactMessage(this.state.formData);
   }
 
-  render() {
+  renderEmailForm() {
     const { recaptchaSuccess, sendMessageStatus } = this.state;
 
     let formSubmitArea = (
@@ -133,6 +134,22 @@ class Contact extends Component {
             />
           </div>
           {formSubmitArea}
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    // return this.renderEmailForm();
+    return (
+      <div className="contact-container">
+        <div className="contact-redirect">
+          My contact info and public repositories (including this web application) are available on my GitHub page:
+          <a className="contact-link" href="https://github.com/jbxchung">https://github.com/jbxchung</a>
+          CI/CD for this site is automated with GitHub Actions and deployed with Docker on a self-hosted raspberry pi cluster.
+          <p>
+            Thanks for visiting!
+          </p>
         </div>
       </div>
     );
