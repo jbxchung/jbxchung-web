@@ -159,14 +159,12 @@ const ResumeData = {
               {
                 text: 'Working closely with the business and external clients on new financial chat platform initiatives, automating trade workflows via chatbots and web application integration',
                 description: [
-                  { text: '40,000 active users' },
-                  { text: 'Received the Intelligent Interactive Workflow award in the Symphony 2019 Hackathon' },
-                  { text: 'Supported the JPMorgan-Citi joint presentation at Symphony Innovate 2019' },
+                  { text: 'Working on the Symphony chat platform with 40,000+ active users' },
                 ],
               },
               { text: 'Coordinating sprints, development, testing, and releases with teams across the US, Canada, and China' },
               { text: 'Technical lead for an automated RFQ workflow application in collaboration with AllianceBernstein' },
-              { text: 'Developed a block trading workflow from initial concept through to production deployment used by teams globally' },
+              { text: 'Developed a global block trading workflow from initial concept through to production deployment' },
             ],
           },
           {
