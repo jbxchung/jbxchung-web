@@ -5,6 +5,10 @@ import { bindActionCreators } from 'redux';
 import ReCAPTCHA from 'react-google-recaptcha';
 import PropTypes from 'prop-types';
 
+import EmailIcon from '../Icons/EmailIcon';
+import GithubLogo from '../Icons/GitHubLogo';
+import LinkedInLogo from '../Icons/LinkedInLogo';
+
 import siteKey from '../../constants/reCaptchaPubKey';
 
 import './Contact.scss';
@@ -143,10 +147,31 @@ class Contact extends Component {
     // return this.renderEmailForm();
     return (
       <div className="contact-container">
-        <div className="contact-redirect">
-          My contact info and public repositories (including this web application) are available on my GitHub page:
-          <a className="contact-link" href="https://github.com/jbxchung">https://github.com/jbxchung</a>
-          CI/CD for this site is automated with GitHub Actions and deployed with Docker on a self-hosted raspberry pi cluster.
+        <div className="contact-header">
+          Questions? Feel free to contact me at:
+        </div>
+        <div className="contact-details">
+          <div className="contact-entry">
+            <a href="mailto:brandon@jbxchung.dev" title="Email" alt="Email" target="_blank" rel="noreferrer">
+              <EmailIcon />
+              <span className="link-text">brandon@jbxchung.dev</span>
+            </a>
+          </div>
+          <div className="contact-entry">
+            <a href="https://github.com/jbxchung" title="GitHub" alt="GitHub" target="_blank" rel="noreferrer">
+              <GithubLogo />
+              <span className="link-text">GitHub</span>
+            </a>
+          </div>
+          <div className="contact-entry">
+            <a href="https://www.linkedin.com/in/jiehong-brandon-chung-79543856/" title="LinkedIn" alt="LinkedIn" target="_blank" rel="noreferrer">
+              <LinkedInLogo />
+              <span className="link-text">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        <div className="contact-footer">
+          CI/CD for this site has been automated with GitHub Actions and deployed with Docker on a self-hosted raspberry pi cluster.
           <p>
             Thanks for visiting!
           </p>

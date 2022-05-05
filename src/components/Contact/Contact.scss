@@ -6,21 +6,42 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    
+    .contact-header {
+        font-size: 2rem;
+    }
 
-    .contact-redirect {
-        font-size: 1.5rem;
+    .contact-details {
+        flex: 1;
 
-        .contact-link {
-            margin: 2rem;
-            display: block;
-            font-size: 3rem;
-            color: $page-default-font-color;
-            text-align: center;
+        .contact-entry {
+            margin: 1rem 0;
+            font-size: 1.5rem;
 
-            &:hover {
-                color: $link-hover-text-color;
+            a {
+                display: flex;
+                color: $page-default-font-color;
+                text-align: center;
+                fill: #fff;
+
+                &:hover {
+                    color: $link-hover-text-color;
+                    fill: $link-hover-text-color;
+                }
+
+                svg {
+                    width: 2rem;
+                }
+
+                .link-text {
+                    margin-left: 1rem;
+                }
             }
         }
+    }
+
+    .contact-footer {
+        font-size: 1.5rem;
     }
     
     .contact-form {
