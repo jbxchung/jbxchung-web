@@ -1,26 +1,27 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
+// const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   module: {
     rules: [
-      {
-        test: /\.(js|jsx|mjs)$/,
-        include: [path.resolve(__dirname, 'src')],
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-      },
+      // {
+      //   test: /\.(js|jsx|mjs)$/,
+      //   include: [path.resolve(__dirname, 'src')],
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       options: {
+      //         formatter: eslintFormatter,
+      //         eslintPath: require.resolve('eslint'),
+      //       },
+      //       loader: require.resolve('eslint-loader'),
+      //     },
+      //   ],
+      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
@@ -33,22 +34,15 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: [
-          require.resolve('style-loader'),
-          require.resolve('css-loader'),
-          require.resolve('sass-loader'),
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: 'images',
-            },
-          },
-        ],
+        type: 'asset/resource',
       },
       {
         test: /\.svg$/,
@@ -66,7 +60,12 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+    fallback: {
+      buffer: require.resolve('buffer'),
+    },
+  },
   output: {
     path: path.resolve(__dirname, 'dist/'),
     publicPath: '/dist/',
@@ -76,5 +75,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: './src/img/favicon.ico',
     }),
+    new ESLintPlugin(),
   ],
 };

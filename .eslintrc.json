@@ -4,6 +4,7 @@
   ],
   "rules": {
     "arrow-parens": ["warn", "as-needed", { "requireForBlockBody": true }],
+    "default-param-last": "off",
     "prefer-destructuring": "off",
     "spaced-comment": "error",
     "func-names": "off",
@@ -18,6 +19,7 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/forbid-prop-types": "off",
+    "react/function-component-definition": "off",
     "react/no-did-update-set-state": "off",
     "react/no-did-mount-set-state": "off",
     "class-methods-use-this": ["off"],
