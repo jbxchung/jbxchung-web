@@ -8,20 +8,6 @@ module.exports = {
   entry: './src/index.js',
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx|mjs)$/,
-      //   include: [path.resolve(__dirname, 'src')],
-      //   enforce: 'pre',
-      //   use: [
-      //     {
-      //       options: {
-      //         formatter: eslintFormatter,
-      //         eslintPath: require.resolve('eslint'),
-      //       },
-      //       loader: require.resolve('eslint-loader'),
-      //     },
-      //   ],
-      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
