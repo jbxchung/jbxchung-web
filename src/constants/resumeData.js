@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
+import HtmlReactParser from 'html-react-parser';
 
 const ResumeData = {
   about: {
     sections: [
       {
         header: 'Bio',
-        content: ReactHtmlParser(`
+        content: HtmlReactParser(`
           <p>
             My name is Jiehong Brandon Xavier Chung, but I go by Brandon. I currently work in the financial technology space, 
             developing enterprise web applications, automating trade workflows, and writing chatbots on the Symphony financial chat platform.
@@ -56,7 +56,7 @@ const ResumeData = {
                 {` - ${education.graduationDate}`}
                 {` - ${education.location}`}
               </span>
-              {education.description.map(line => <p key={line}>{ReactHtmlParser(line)}</p>)}
+              {education.description.map(line => <p key={line}>{HtmlReactParser(line)}</p>)}
             </div>
           ))
         ),
