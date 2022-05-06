@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
 } from 'react-router-dom';
 
@@ -30,18 +30,18 @@ class App extends Component {
 
           <div className="main-content">
             <div className="bg" />
-            <Switch>
+            <Routes>
               {
                 this.state.pages.map((page) => {
                   if (Array.isArray(page.url)) {
                     return page.url.map(url => (
-                      <Route exact path={url} key={page.url} component={page.component} />
+                      <Route path={url} key={page.url} element={<page.component />} />
                     ));
                   }
-                  return <Route exact path={page.url} key={page.url} component={page.component} />;
+                  return <Route path={page.url} key={page.url} element={<page.component />} />;
                 })
               }
-            </Switch>
+            </Routes>
           </div>
         </Router>
       </div>

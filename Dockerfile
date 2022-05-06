@@ -3,9 +3,6 @@ FROM node:16-alpine as build
 
 WORKDIR /app
 
-# RUN apk update && apk upgrade
-# RUN apk add python3 make gcc g++
-
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
