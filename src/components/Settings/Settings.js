@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import SettingsIcon from '../../img/settings.svg';
+import SettingsIcon from '../Icons/SettingsIcon';
 import './Settings.scss';
 
 class Settings extends Component {

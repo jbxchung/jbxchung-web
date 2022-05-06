@@ -9,7 +9,7 @@ import NavbarLink from './NavbarLink';
 import * as actions from '../../actions';
 
 import logo from '../../img/logo_white_transparent.png';
-import MenuIcon from '../../img/menu.svg';
+import MenuIcon from '../Icons/MenuIcon';
 
 import './Navbar.scss';
 
@@ -61,7 +61,9 @@ class Navbar extends Component {
           <img src={logo} alt="logo" className="home-logo" onClick={() => window.location = '/'} />
         </div>
         <div ref={this.navbarContentRef} className="navbar-content">
-          <MenuIcon viewBox="0 0 24 24" onClick={this.onMenuIconClick} />
+          <span onClick={this.onMenuIconClick}>
+            <MenuIcon />
+          </span>
           <div className={`navbar-links${this.state.showNavMenu ? ' open' : ''}`}>
             {
               Object.keys(pageMapping).map((pageName) => {
