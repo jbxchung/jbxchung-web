@@ -134,6 +134,7 @@ const ResumeData = {
       items: [
         { name: 'Git', experience: '9 years' },
         { name: 'TeamCity, uDeploy', experience: '4 years' },
+        { name: 'GitHub Actions', experience: '1 year' },
         { name: 'Docker', experience: '1 year' },
         { name: 'Kubernetes', experience: '1 year' },
         { name: 'Ansible' },
