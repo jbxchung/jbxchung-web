@@ -32,14 +32,9 @@ class App extends Component {
             <div className="bg" />
             <Routes>
               {
-                this.state.pages.map((page) => {
-                  if (Array.isArray(page.url)) {
-                    return page.url.map(url => (
-                      <Route path={url} key={page.url} element={<page.component />} />
-                    ));
-                  }
-                  return <Route path={page.url} key={page.url} element={<page.component />} />;
-                })
+                this.state.pages.map(page => (
+                  <Route path={page.url} key={page.url} element={<page.component />} />
+                ))
               }
             </Routes>
           </div>

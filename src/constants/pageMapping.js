@@ -6,7 +6,7 @@ import Contact from '../components/Contact/Contact';
 
 const Pages = {
   home: {
-    url: ['/', '/home'],
+    url: '/',
     navbarTitle: 'Home',
     component: Home,
   },

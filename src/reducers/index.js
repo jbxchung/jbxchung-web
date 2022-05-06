@@ -1,8 +1,12 @@
 import * as actionTypes from '../constants/actionTypes';
 import pageMapping from '../constants/pageMapping';
 
+const initialActivePage = pageMapping[Object.keys(pageMapping).find(pageName => (
+  pageMapping[pageName].url === window.location.pathname
+))] || pageMapping.home;
+
 const initialState = {
-  activePageId: pageMapping.home.url[0],
+  activePageId: initialActivePage.url,
   recaptchaSuccess: false,
   sendMessageStatus: null,
 };
