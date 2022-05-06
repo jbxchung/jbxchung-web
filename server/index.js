@@ -10,10 +10,7 @@ const limiter = rateLimit({
   windowMs: 1000, // 1 second
   max: 100,
 });
-
 app.use(limiter);
-
-app.use('/favicon.ico', express.static('../src/img/favicon.ico'));
 
 // serve static resources for webapp at /dist
 app.use('/dist', express.static(path.join(__dirname, '../dist')));

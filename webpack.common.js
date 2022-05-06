@@ -1,8 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-// const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -58,9 +56,6 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      favicon: './src/img/favicon.ico',
-    }),
     new ESLintPlugin(),
   ],
 };
