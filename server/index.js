@@ -1,8 +1,17 @@
 const express = require('express');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const config = require('./config');
+
+// limit requests to 100 per second
+const limiter = rateLimit({
+  windowMs: 1000, // 1 second
+  max: 100,
+});
+
+app.use(limiter);
 
 app.use('/favicon.ico', express.static('../src/img/favicon.ico'));
 
