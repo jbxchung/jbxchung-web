@@ -52,6 +52,7 @@ class Navbar extends Component {
 
   onNavbarItemClick(newPageId) {
     this.props.selectActivePage(newPageId);
+    this.setState({ showNavMenu: false });
   }
 
   render() {
