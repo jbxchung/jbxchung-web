@@ -148,7 +148,7 @@ class Contact extends Component {
     return (
       <div className="contact-container">
         <div className="contact-header">
-          Questions? Feel free to contact me:
+          Questions? Feel free to contact me via:
         </div>
         <div className="contact-details">
           <div className="contact-entry">

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { useNavigate } from 'react-router-dom';
 
 import pageMapping from '../../constants/pageMapping';
 import NavbarLink from './NavbarLink';
@@ -32,12 +31,6 @@ class Navbar extends Component {
   componentDidMount() {
     document.addEventListener('click', this.onMouseClickEvent);
     this.props.selectActivePage(this.props.activePageId);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.activePageId !== this.props.activePageId) {
-      this.props.navigate(this.props.activePageId);
-    }
   }
 
   componentWillUnmount() {
@@ -101,7 +94,6 @@ class Navbar extends Component {
 Navbar.propTypes = {
   activePageId: PropTypes.string.isRequired,
   selectActivePage: PropTypes.func.isRequired,
-  navigate: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -116,9 +108,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-function withNavigate(NavComponent) {
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return props => <NavComponent {...props} navigate={useNavigate()} />;
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigate(Navbar));
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
