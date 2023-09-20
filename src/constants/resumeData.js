@@ -158,7 +158,17 @@ const ResumeData = {
             location: 'Jersey City, NJ',
             description: [
               {
-                text: 'Working closely with the business and external clients on new financial chat platform initiatives, automating trade workflows via chatbots and web application integration',
+                text: 'First team to deliver a ChatGPT/OpenAI solution for regulatory-compliant internal use',
+              },
+              {
+                text: 'Technical lead for a global data regulation cookie compliance solution ',
+                description: [
+                  { text: 'Leading development effort across teams that manage 1400+ web applications internally' },
+                  { text: 'Integrating with OneTrust vendor for automated scanning and integration' },
+                ],
+              },
+              {
+                text: 'Working closely with the business and external clients on new initiatives, automating trade workflows via chatbots and web application integration',
                 description: [
                   { text: 'Working on the Symphony chat platform with 40,000+ active users' },
                 ],
