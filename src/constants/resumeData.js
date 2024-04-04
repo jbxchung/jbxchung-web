@@ -149,23 +149,34 @@ const ResumeData = {
         shortName: 'Citi',
         jobs: [
           {
-            title: 'Assistant Vice President',
+            title: 'Vice President',
             dateRange: {
-              start: Date.UTC(2019, 8),
+              start: Date.UTC(2024, 1),
               end: new Date().getTime(),
             },
             isCurrent: true,
             location: 'Jersey City, NJ',
             description: [
               {
-                text: 'First team to deliver a ChatGPT/OpenAI solution for regulatory-compliant internal use',
-              },
-              {
                 text: 'Technical lead for a global data regulation cookie compliance solution ',
                 description: [
                   { text: 'Leading development effort across teams that manage 1400+ web applications internally' },
                   { text: 'Integrating with OneTrust vendor for automated scanning and integration' },
                 ],
+              },
+              { text: 'Developing internal tooling for CI/CD pipeline automation for mobile application development (iOS/Android' },
+            ],
+          },
+          {
+            title: 'Assistant Vice President',
+            dateRange: {
+              start: Date.UTC(2019, 8),
+              end: Date.UTC(2024, 1),
+            },
+            location: 'Jersey City, NJ',
+            description: [
+              {
+                text: 'First team to deliver a ChatGPT/OpenAI solution for regulatory-compliant internal use',
               },
               {
                 text: 'Working closely with the business and external clients on new initiatives, automating trade workflows via chatbots and web application integration',
