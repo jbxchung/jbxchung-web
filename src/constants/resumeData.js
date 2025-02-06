@@ -23,9 +23,12 @@ const ResumeData = {
           {
             degree: 'MS in Cybersecurity',
             name: 'New York University',
-            graduationDate: 'Spring 2024 (projected)',
+            graduationDate: 'Winter 2024',
             location: 'New York, NY (remote)',
-            description: ['NYU Cyber Fellows, part-time in parallel with career'],
+            description: [
+              'GPA: 4.0 <i>summa cum laude</i>',
+              'NYU Cyber Fellows',
+            ],
           },
           {
             degree: 'BS in Computer Engineering',
@@ -38,11 +41,7 @@ const ResumeData = {
             name: 'Staten Island Technical High School',
             graduationDate: 'June 2013',
             location: 'New York, NY',
-            description: [
-              'GPA: 101.95 (weighted), 98.0 (unweighted)',
-              'SAT: 2320 (790 Math, 750 Reading, 780 Writing), SAT II: Math 2 - 800, Physics - 800',
-              '2013 National AP Scholar with Distinction',
-            ],
+            description: ['GPA: 101.95 (weighted), 98.0 (unweighted)'],
           },
         ],
         render: content => (
@@ -69,7 +68,7 @@ const ResumeData = {
       items: [
         {
           name: 'Javascript (ES6, Node, React, jQuery)',
-          experience: '6 years',
+          experience: '8 years',
           items: [
             { name: 'Enterprise web applications' },
             { name: 'Rapid UI/UX prototyping' },
@@ -79,7 +78,7 @@ const ResumeData = {
         },
         {
           name: 'HTML5, CSS3',
-          experience: '6 years',
+          experience: '8 years',
           items: [
             { name: 'SCSS/SASS/LESS' },
             { name: 'Bootstrap, CSS Grid, Flexbox' },
@@ -95,7 +94,7 @@ const ResumeData = {
       items: [
         {
           name: 'Javascript (Node, Express)',
-          experience: '6 years',
+          experience: '8 years',
           items: [
             { name: 'REST APIs and services' },
             { name: 'Data aggregation/filtering' },
@@ -105,7 +104,7 @@ const ResumeData = {
         },
         {
           name: 'Java (Maven, Spring)',
-          experience: '4 years',
+          experience: '7 years',
           items: [
             { name: 'Project architecture and software design patterns' },
             { name: 'REST APIs and websocket endpoints' },
@@ -115,7 +114,7 @@ const ResumeData = {
         },
         {
           name: 'MongoDB, SQL',
-          experience: '4 years',
+          experience: '7 years',
         },
       ],
     },
@@ -132,11 +131,11 @@ const ResumeData = {
     sourceControlDevOps: {
       header: 'Source Control + DevOps',
       items: [
-        { name: 'Git', experience: '9 years' },
-        { name: 'TeamCity, uDeploy', experience: '4 years' },
+        { name: 'Git', experience: '10 years' },
+        { name: 'TeamCity, uDeploy', experience: '6 years' },
         { name: 'GitHub Actions', experience: '1 year' },
-        { name: 'Docker', experience: '1 year' },
-        { name: 'Kubernetes', experience: '1 year' },
+        { name: 'Docker', experience: '3 years' },
+        { name: 'Kubernetes', experience: '3 years' },
         { name: 'Ansible' },
         { name: 'SVN' },
       ],
@@ -160,11 +159,11 @@ const ResumeData = {
               {
                 text: 'Technical lead for a global data regulation cookie compliance solution ',
                 description: [
-                  { text: 'Leading development effort across teams that manage 1400+ web applications internally' },
+                  { text: 'Leading development effort across application teams firm-wide' },
                   { text: 'Integrating with OneTrust vendor for automated scanning and integration' },
                 ],
               },
-              { text: 'Developing internal tooling for CI/CD pipeline automation for mobile application development (iOS/Android' },
+              { text: 'Developed internal tooling for CI/CD pipeline automation for mobile application development (iOS/Android' },
             ],
           },
           {
@@ -236,7 +235,11 @@ const ResumeData = {
     ],
     events: [
       {
-        name: 'Graduated from Boston University',
+        name: 'Graduated from New York University, M.S. Cybersecurity',
+        date: Date.UTC(2024, 12),
+      },
+      {
+        name: 'Graduated from Boston University, B.S. Computer Engineering',
         date: Date.UTC(2017, 1),
       },
     ],
